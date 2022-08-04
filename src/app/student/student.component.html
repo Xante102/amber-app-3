@@ -1,0 +1,17 @@
+<p>Welcome {{studentName}} to our angular course.</p>
+
+<p class="studentstyle"> Welcome {{studentName}} to our beginner Angular Course. </p>
+    <label> student Name    </label>
+    <input type="text" [(ngModel)]="studentName" >
+    <input type="text"  (input)="onUpdateStudentNameEvent($event)">
+    <p> {{studentName}}</p>
+    <button class="btn btn-success" [disabled]="!allowAdd" (click)="onAddStudentClick()"> Add Student </button>
+    <button class="btn btn-primary" (click)="onUpdateStudentName()" > Update Student Name </button>
+    <button class="btn btn-primary" (click)="toggleStudentStatus()" > Toggle Status </button>
+    <p *ngIf="studentAdded"> {{studentAddStatus}}</p>
+    <p *ngIf="!studentAdded"> No Student has been added.</p>
+    <p [ngClass]="{present: studentStatus == 'present'} || {present: studentStatus == 'absent'}" [ngStyle]="studentStatus == 'present' ? { 'background-color': 'lightgreen'}: { 'background-color': 'pink'}  " > {{studentStatus}} </p>
+    <p *ngFor="let student of students">
+        {{student}}
+    </p>
+    <!-- <ng-template #notAdded > No Student has been added.</ng-template> -->

@@ -1,0 +1,75 @@
+<div class="flex justify-center items-center space-x-10 my-10">
+  <button
+  (click)="toggle('image')"
+  class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+>
+  Toggle Image
+</button>
+<button
+  (click)="toggle('text')"
+  class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+>
+  Toggle Text
+</button>
+<button
+  (click)="toggle('video')"
+  class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+>
+  Toggle Video
+</button>
+</div>
+
+
+<div class="flex justify-center mx-40 h-[30rem] mb-10">
+  <div class="" *ngIf="click == 'image'">
+    <img class="h-[30rem]"
+      src="https://miro.medium.com/max/1400/1*D2ozXZBZnb_j52v2t6sQAw.png"
+      alt=""
+    />
+  </div>
+
+  <div class="px-64 prose font-semibold" *ngIf="click == 'text'">
+    <h1 class="text-center text-3xl font-bold mb-10">Observables</h1>
+    <p class="mb-5">
+      The observer pattern is a software design pattern in which an object,
+      called the subject, maintains a list of its dependents, called observers,
+      and notifies them automatically of state changes. This pattern is similar
+      (but not identical) to the publish/subscribe design pattern.
+    </p>
+    <p class="mb-5">
+      Observables are declarative —that is, you define a function for publishing
+      values, but it is not executed until a consumer subscribes to it. The
+      subscribed consumer then receives notifications until the function
+      completes, or until they unsubscribe.
+    </p>
+    <p>
+      An observable can deliver multiple values of any type —literals, messages,
+      or events, depending on the context. The API for receiving values is the
+      same whether the values are delivered synchronously or asynchronously.
+      Because setup and teardown logic are both handled by the observable, your
+      application code only needs to worry about subscribing to consume values,
+      and when done, unsubscribing. Whether the stream was keystrokes, an HTTP
+      response, or an interval timer, the interface for listening to values and
+      stopping listening is the same. Because of these advantages, observables
+      are used extensively within Angular, and for application development as
+      well.
+    </p>
+  </div>
+
+  <div class="" *ngIf="click == 'video'">
+    <iframe
+      width="560"
+      height="298"
+      src="https://www.youtube.com/embed/MbDDWZZK2Yg"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>
+<div *ngFor="let click of clicks" class="mx-64 text-center roundeed-sm mb-2">
+  <p class="font-semibold py-3 uppercase" [ngClass]="click.color" [ngStyle]="{'background-color' : style(click.color) }">
+    {{ click.color }} button was clicked at {{ click.date | date: 'mediumTime' }}
+  </p>
+</div>
